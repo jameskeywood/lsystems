@@ -1,6 +1,6 @@
 class plant{
   String str = "S";
-  float len = 4;
+  float len = 2;
   float angle = 0.1*PI;
   float angleX = 0.3*PI;
   

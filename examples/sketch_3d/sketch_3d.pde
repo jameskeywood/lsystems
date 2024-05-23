@@ -16,7 +16,7 @@ void draw(){
     rotateX(0.01*PI*frameCount);
     p1.display();
   popMatrix();
-  if (frameCount < 12){
+  if (frameCount < 14){
     p1.expand();
   }
 }
