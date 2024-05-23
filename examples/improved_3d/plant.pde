@@ -1,44 +1,49 @@
+import java.util.Stack;
+
 class plant{
   String str = "S";
-  float len = 2;
+  float len = 4;
   float angle = 0.1*PI;
   float angleX = 0.3*PI;
   
   void display(){
-    float sWeight = 20; // stroke weight
-    float brightness = 10;
-    float hue = 0;
+    Stack<Float> thicknesses = new Stack<Float>();
+    
+    float thickness = 100;
+    float brightness = 20;
+    float hue = 30;
     for (int i = 0; i < str.length(); i++){
       switch(str.charAt(i)){
         case 'F':
-          strokeWeight(sWeight);
+          if (thickness > 1){
+            thickness *= 0.98;
+          }
+          strokeWeight(thickness);
           stroke(hue, 100, brightness);
           line(0, 0, len, 0);
           translate(len, 0);
           break;
-        case 'l':
+        case 'L':
+          strokeWeight(2);
+          stroke(120, 100, 20);
+          fill(120, 100, 40);
+          triangle(0, 0, 0, 20, 20, 20);
+          break;
+        case '-':
           rotate(-angle);
           rotateX(angleX);
           break;
-        case 'r':
+        case '+':
           rotate(angle);
           rotateX(angleX);
           break;
         case '[':
           pushMatrix();
+          thicknesses.push(thickness);
           break;
         case ']':
           popMatrix();
-          break;
-        case 'u': // go up the branch
-          sWeight *= 0.8;
-          brightness *= 1.5;
-          hue = (hue + 10) % 360;
-          break;
-        case 'd': // go down the branch
-          sWeight *= (1.0/0.8);
-          brightness *= (1.0/1.5);
-          hue = ((hue - 10) + 360) % 360;
+          thickness = thicknesses.pop();
           break;
       }
     }
@@ -61,10 +66,10 @@ class plant{
           break;
         case 'B':
           if (random(100) < 50){
-            newString += "[ullFBd][urFBd]";
+            newString += "[--FBL][+FBL]";
           }
           else{
-            newString += "[ulFBd][urrFBd]";
+            newString += "[-FBL][++FBL]";
           }
           break;
         default:
