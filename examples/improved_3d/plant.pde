@@ -10,16 +10,14 @@ class plant{
     Stack<Float> thicknesses = new Stack<Float>();
     
     float thickness = 100;
-    float brightness = 20;
-    float hue = 30;
     for (int i = 0; i < str.length(); i++){
       switch(str.charAt(i)){
         case 'F':
-          if (thickness > 1){
+          if (thickness > 5){
             thickness *= 0.98;
           }
           strokeWeight(thickness);
-          stroke(hue, 100, brightness);
+          stroke(30, 100, 20);
           line(0, 0, len, 0);
           translate(len, 0);
           break;
