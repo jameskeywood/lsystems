@@ -1,5 +1,5 @@
 ## Summary
-Here I will store example code that I have used.
+Here I will store example code and learning material that I have used.
 
 ## Sources
 - Algorithmic botany resources: http://algorithmicbotany.org/
